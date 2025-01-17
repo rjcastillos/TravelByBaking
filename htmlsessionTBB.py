@@ -39,7 +39,7 @@ with open('link_test.txt','r') as Recipes_links:
             soup=BeautifulSoup(r.html.html,'html.parser')
             content=soup.find_all(["title","h3","p","li","lo","ytp-title-link yt-uix-sessionlink"])
             hname=h_name(url)
-            Header="<Header>"+str(hname)+"</Header>\n"
+            Header="\n<Header>"+str(hname)+"</Header>\n"
             wLine(Header)
             for item in content:
                 if DEBUG: print(item)
