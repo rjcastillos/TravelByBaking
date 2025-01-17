@@ -1,0 +1,5 @@
+localworking/
+_*
+*_bk
+.tmp.html
+.DS_Store
