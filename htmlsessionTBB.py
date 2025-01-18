@@ -19,11 +19,14 @@ def h_name(url):
     hname=s_url[len(s_url)-2]
     return hname
 
-with open('link_test.txt','r') as Recipes_links:
-    for url in Recipes_links:
-        if not url.startswith("#"):
-            if DEBUG: print("Making session with",url)
-            session = HTMLSession() 
+with open('links.txt','r') as Recipes_links:
+    for _line in Recipes_links:
+        if not _line.startswith("#"):
+            if DEBUG: print("Making session with",_line)
+            session = HTMLSession()
+            url=_line.replace("\n","")
+            MESS="<Link>"+url+"</Link>"
+            wLine(MESS)
             r=session.get(url)
             if r.status_code == 404:
                 WA="<ERROR 404> "+url+"</ERROR 404>"
