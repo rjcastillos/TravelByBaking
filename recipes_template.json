@@ -1,0 +1,30 @@
+{
+    "RecipeHeader": {
+        "RecipeCodeName":"Header",
+        "ID":"",
+        "Lang":"en",
+        "Link": "",
+        "ShortDescription": "title",
+        "Title": "<h3 class=\"has-text-align-center wp-block-post-title\"",
+        "Description": ["The <p> after <h3 class has-text etc"],
+        "Ingredients": ["\"h3 class=\"wp-block-heading\",","Ingredients the <p> after class ",
+            {
+                "Amount": 0.0,
+                "Measurement": "tsp",
+                "Ingredient": 0
+            }
+        ],
+        "ServingSize":{"colName":"Serving size","size":0.0},
+        "Rtime": [
+            {
+            "TimeType":"Cooking",
+            "colName":"Cooking Time",
+            "_rtime":"60 min"
+            }
+        ],
+        "Difficulty":{"colName":"Dificulty Level","r_Dlevel":"Beginners"},
+        "Directions":["<li>"],
+        "VideoUrl":["urls"]
+
+    }
+}
