@@ -24,7 +24,8 @@
         ],
         "Difficulty":{"colName":"Dificulty Level","r_Dlevel":"Beginners"},
         "Directions":["<li>"],
-        "VideoUrl":["urls"]
+        "VideoUrl":["urls"],
+        "ThumNails":["urls"]
 
     }
 }
