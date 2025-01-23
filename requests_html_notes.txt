@@ -1,0 +1,28 @@
+Installing requests_html 
+ pip istall requests requests_html
+  in widows you might need a power shell with Admin privleges
+ 
+ When rendering a page for the 1st time chromium is needed
+  If there is an error downloading it this is the location 
+
+  https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html?prefix=Win_x64/1181217/
+
+  also we can manually change the  version in the file 
+  "C:\Python312\Lib\site-packages\pyppeteer\__init__.py"
+   Line 21 
+      __chromium_revision__ = '1181217'
+
+^#playright^ is a newer lib to try 
+
+Simplest code example:
+======================
+from requests_html import HTMLSession
+
+url="https://someurl"
+
+s = HTMLSession()
+r = s.get(url)
+r.html.render(sleep=1)
+
+print(r.status_code)
+====================0

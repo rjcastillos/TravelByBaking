@@ -15,17 +15,11 @@
             }
         ],
         "ServingSize":{"colName":"Serving size","size":0.0},
-        "Rtime": [
-            {
-            "TimeType":"Cooking",
-            "colName":"Cooking Time",
-            "_rtime":"60 min"
-            }
-        ],
+        "rTime": [],
         "Difficulty":{"colName":"Dificulty Level","r_Dlevel":"Beginners"},
         "Directions":["<li>"],
-        "VideoUrl":["urls"],
-        "ThumNails":["urls"]
+        "VideoUrl":{"src":"iframe yt source","title":"alt"},
+        "ThumbNails":["urls"]
 
     }
 }
