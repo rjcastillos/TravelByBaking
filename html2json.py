@@ -113,7 +113,7 @@ for item in xRtime:
 #Extracting VideoUrl
 Myinfo['VideoUrl']={}
 fVideoUrl=r.html.find('iframe')
-print("VIDEO URL IN YT ==>")
+if DEBUG: print("VIDEO URL IN YT ==>")
 for xv in fVideoUrl:
     if DEBUG:print(xv)
     src=xv.attrs['src']
