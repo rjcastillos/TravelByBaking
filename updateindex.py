@@ -1,10 +1,10 @@
 import json
 
-DEBUG=True
+DEBUG=False
 #
 # Updates in INPUTFILE
 #
-INPUTFILE="tofix2.json"
+INPUTFILE="batch_tofix.json"
 #
 #IF NEWFILE <> FILETOUPDATE this will contain only the last update 
 #
