@@ -1,6 +1,6 @@
 import json
 
-DEBUG=False
+DEBUG=True
 #
 # Updates in INPUTFILE
 #
@@ -93,5 +93,7 @@ if updateDict:
         print("Index =",_Index)
         for _key,_val in updateDict[_Index].items():
             print("K/_Obj = ",_key,"\nVal/_ObjNewValue = ",_val)
+            _Obj=_key
+            _ObjNewValue=_val
             print("-.-.-.-.-.-.-")
-            uPdate("Dict",_Index,_Obj,_ObjNewValue)
+            uPdate("Dict Index",_Index,_Obj,_ObjNewValue)
