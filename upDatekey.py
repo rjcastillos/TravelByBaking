@@ -4,7 +4,7 @@ DEBUG=False
 #
 # Updates in INPUTFILE
 #
-INPUTFILE="localworking/Directionstofix.json"
+INPUTFILE="tofix2.json"
 #
 #IF NEWFILE <> FILETOUPDATE this will contain only the last update 
 #
@@ -22,6 +22,11 @@ def uPdate(I,IV,O,NewValue):
          #print(data[I])
          #print(f'"{my_str}"')
          print("Before : ",f'<{O}>' ,"IN",f'<{IV}>',"==>",data[IV][O])
+         #another way is to print the variable with a wrapper 
+         #
+         #foo=" within spaces "
+         #print(f'{foo!r}')
+         #>>>' within spaces 
     except:
         print("Not updated ",data[IV][O],"NOT FOUND")
   

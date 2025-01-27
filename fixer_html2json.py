@@ -12,8 +12,8 @@ from requests_html import HTMLSession
 #
 import json
 DEBUG=False
-LINKSTOPROCESS="link_test.txt"
-OUTPUTFILE="tofix.json"
+LINKSTOPROCESS="localworking/ingreanddirec_tofix.txt"
+OUTPUTFILE="tofix2.json"
 TAGS_TO_PROCESS=("Link","Header","title","p","li","h3")
 CLASSES_TO_PROCESS=("wp-block-heading","has-text-align-center wp-block-post-title","has-text-align-center wp-block-post-title")
 PRE="<"
@@ -78,40 +78,45 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             #allInfo[Header]['Title']=Title.text
 
             #Descrpition
-            Myinfo['Description']=''
+            #Myinfo['Description']=''
             #Description=r.html.find('div.wp-block-ryelle-recipe-directions')
-            Description=r.html.find('div.wp-site-blocks')
-            try:
-                Myinfo['Description']=Description.text
-                allInfo[Header]['Description']=Description.text
-            except:
-                try:
-                    for iter in Description:
-                        print(iter.text)
-                        Myinfo['Description']=iter.text
-                except:
-                    Myinfo['Description']="CHECK DESCRIPTION @"+url
-                    allInfo[Header]['Description']="CHECK DESCRIPTION @"+url
+            #Description=r.html.find('div.wp-site-blocks')
+            #try:
+            #    Myinfo['Description']=Description.text
+            #    allInfo[Header]['Description']=Description.text
+            #except:
+            #    try:
+            #        for iter in Description:
+            #            print(iter.text)
+            #            Myinfo['Description']=iter.text
+            #    except:
+            #        Myinfo['Description']="CHECK DESCRIPTION @"+url
+            #        allInfo[Header]['Description']="CHECK DESCRIPTION @"+url#
 
             #Ingredients as a list
-            #Myinfo['Ingredients']=[]
-            #allInfo[Header]['Ingredients']=[]
-            #xIngredients=r.html.xpath('/html/body/div/main/div[2]/div/div[2]/ul')
-            #for ulli in xIngredients:
-            #    if DEBUG: print(ulli.text)
-            #    Myinfo['Ingredients'].append(ulli.text)
-            #    allInfo[Header]['Ingredients'].append(ulli.text)   
+            Myinfo['Ingredients']=[]
+            allInfo[Header]['Ingredients']=[]
+            xIngredients=r.html.xpath('/html/body/div/main/div[2]/div/div[2]/ul')
+            
+            xIngredients=r.html.xpath('/html/body/div/main/div[2]/div')
+    
+            for ulli in xIngredients:
+                if DEBUG: print(ulli.text)
+                Myinfo['Ingredients'].append(ulli.text)
+                allInfo[Header]['Ingredients'].append(ulli.text)   
 
             #Directions as a list
             #Myinfo['Directions']=[]
             #allInfo[Header]['Directions']=[]
             #xDirections=r.html.xpath('/html/body/div/main/div[2]/div/div[3]')
+            #xDirections=r.html.xpath('/html/body/div/main/div[2]')
+            
 
             #if DEBUG: print("Directions type ",type(xDirections),"and length",len(xDirections))
             #for li in xDirections:
-            #    if DEBUG: print(li.text)
-            #    Myinfo['Directions'].append(li.text)
-            #    allInfo[Header]['Directions'].append(li.text)
+            #   if DEBUG: print(li.text)
+            #   Myinfo['Directions'].append(li.text)
+            #   allInfo[Header]['Directions'].append(li.text)
 
             # Serving Size as a list
             #Myinfo['ServingSize']={}
@@ -162,5 +167,5 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             
             jSonPrint(Myinfo)
 
-#with open (OUTPUTFILE,"w") as o:
-#    json.dump(allInfo,o)
+with open (OUTPUTFILE,"w") as o:
+    json.dump(allInfo,o)
