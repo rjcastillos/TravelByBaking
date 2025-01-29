@@ -12,8 +12,8 @@ from requests_html import HTMLSession
 #
 import json
 DEBUG=False
-LINKSTOPROCESS="links.txt"
-OUTPUTFILE="allRecipesData.json"
+LINKSTOPROCESS="linkstoupdate.txt"
+OUTPUTFILE="newallRecipesData.json"
 TAGS_TO_PROCESS=("Link","Header","title","p","li","h3")
 CLASSES_TO_PROCESS=("wp-block-heading","has-text-align-center wp-block-post-title","has-text-align-center wp-block-post-title")
 PRE="<"
@@ -40,6 +40,11 @@ def jSonPrint(ThisInfo):
     fData=json.dumps(ThisInfo,indent=4)
     print("....json....")
     print(fData)
+try:
+    with open(OUTPUTFILE,"r") as ufile:
+        allInfo = json.load(ufile)
+except:
+    print("File ",OUTPUTFILE," Does not exist, will be created")
 
 with open(LINKSTOPROCESS,'r') as Recipes_links:
     for _line in Recipes_links:
@@ -59,7 +64,7 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             s = HTMLSession()
             r = s.get(url)
 
-            r.html.render(sleep=2)
+            r.html.render(sleep=1)
 
             if DEBUG:print(r.status_code)
             #Link
@@ -78,11 +83,16 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             allInfo[Header]['Title']=Title.text
 
             #Descrpition
-            Description=r.html.xpath('/html/body/div/main/div[2]/p[1]',first=True)
-            try:
-                Myinfo['Description']=Description.text
-                allInfo[Header]['Description']=Description.text
-            except:
+            Myinfo['Description']=''
+            allInfo[Header]['Description']=''
+            
+            Description=r.html.xpath('/html/body/div/main/div[2]',first=False)
+        
+            if Description:
+                for _Des in Description:
+                    Myinfo['Description']=Myinfo['Description']+(_Des.text)
+                    allInfo[Header]['Description']=allInfo[Header]['Description']+(_Des.text)
+            else:
                 Myinfo['Description']="CHECK DESCRIPTION @"+url
                 allInfo[Header]['Description']="CHECK DESCRIPTION @"+url
 
