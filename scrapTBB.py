@@ -42,19 +42,25 @@ for a_href in soup.find_all("a", href=True):
                         Links.append(deepA_href["href"])
                         print("Deep :",deepA_href["href"])
             
-            
-with open(PREVIOUSLINKS,"r") as fileone:
-    filelistone = fileone.readlines()     
-
-newlinks=list(set(Links)-set(filelistone))
     
 for Link in Links:
     print(Link)
     Line=Link+"\n"
     with open(CURRENTLINKS,'a') as L:
         L.write(Line)
+
+
+with open(CURRENTLINKS,"r") as c:
+    _Links=c.readlines()
+    
+with open(PREVIOUSLINKS,"r") as p:
+    previouspages = p.readlines()     
+
+newlinks=list(set(_Links)-set(previouspages))
+
         
 for nl in newlinks:
+    print(f'New page found ',nl)
     _nl=nl+"\n"
-    with open(NEWLINKS,'w') as O:
+    with open(NEWLINKS,'a') as O:
         O.write(_nl)
