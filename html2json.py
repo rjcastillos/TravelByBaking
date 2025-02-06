@@ -87,6 +87,7 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             allInfo[Header]['Description']=''
             
             Description=r.html.xpath('/html/body/div/main/div[2]',first=False)
+
         
             if Description:
                 for _Des in Description:
@@ -100,6 +101,11 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             Myinfo['Ingredients']=[]
             allInfo[Header]['Ingredients']=[]
             xIngredients=r.html.xpath('/html/body/div/main/div[2]/div/div[2]/ul')
+            #
+            #xIngredients=r.html.find('.wp-block-ryelle-recipe-ingredients',first=False)
+            #
+            #https://requests.readthedocs.io/projects/requests-html/en/latest/
+            #
             for ulli in xIngredients:
                 if DEBUG: print(ulli.text)
                 Myinfo['Ingredients'].append(ulli.text)

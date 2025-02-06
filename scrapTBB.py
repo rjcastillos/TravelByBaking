@@ -1,5 +1,5 @@
 #
-# Scraps and select URLs for further parsing to .json
+# Scraps and selects URLs for further parsing to .json foemat by html2json
 # Ideally checks if it is a new URL (added since the last run)
 #
 from bs4 import BeautifulSoup
