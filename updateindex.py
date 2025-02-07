@@ -4,12 +4,12 @@ DEBUG=False
 #
 # Updates in INPUTFILE
 #
-INPUTFILE="batch_tofix.json"
+INPUTFILE="addnewobject.json"
 #
 #IF NEWFILE <> FILETOUPDATE this will contain only the last update 
 #
-FILETOUPADATE="localworking/allRecipesData.json"
-NEWFILE="localworking/allRecipesData.json"
+FILETOUPADATE="localworking/allRecipesData_piece.json"
+NEWFILE="localworking/allRecipesData_piece.json"
 
 def uPdate(I,IV,O,NewValue):
     with open(FILETOUPADATE, 'r') as ufile:
@@ -40,8 +40,11 @@ def uPdate(I,IV,O,NewValue):
             print("Updating Dict ", data[IV][O])
             data[IV][O].update(myd)
         else:
-            print("Not type defined will try anyways", data[IV][O])
-            data[IV][O]=NewValue
+            if type(data[IV][O]) is str:
+                data[IV][O]=NewValue
+            else:
+                print(type(data[IV][O]),"Not type defined will try anyways", data[IV][O])
+                data[IV][O]=NewValue
     
     
     print("After :",IV,O,"<==",data[IV][O],"\n")
@@ -90,10 +93,24 @@ if updateDict:
     print(f'batchfixes is {type(batchfixes)}')
     for i in updateDict:
         _Index=i
-        print("Index =",_Index)
-        for _key,_val in updateDict[_Index].items():
-            print("K/_Obj = ",_key,"\nVal/_ObjNewValue = ",_val)
-            _Obj=_key
-            _ObjNewValue=_val
-            print("-.-.-.-.-.-.-")
-            uPdate("Dict Index",_Index,_Obj,_ObjNewValue)
+        print(f'{_Index=} and after capitalize it {_Index.upper()}')
+        if _Index.upper() != "ALL":
+            for _key,_val in updateDict[_Index].items():
+                print("K/_Obj = ",_key,"\nVal/_ObjNewValue = ",_val)
+                _Obj=_key
+                _ObjNewValue=_val
+                print("-.-.-.-.-.-.-")
+                uPdate("Dict Index",_Index,_Obj,_ObjNewValue)
+        else:
+            print(f'< This is action {_Index}>')
+            with open(FILETOUPADATE, 'r') as ufileRec:
+                Recipes = json.load(ufileRec)
+                for Recipe in Recipes.keys():
+                     for _key,_val in updateDict[_Index].items():
+                         print(f'Updating {_key}:{_val} to {Recipe}')
+                         myd={_key:_val}
+                         Recipes[Recipe].update(myd)
+                with open(NEWFILE,"w") as ofile:
+                    json.dump(Recipes,ofile)
+                         
+    
