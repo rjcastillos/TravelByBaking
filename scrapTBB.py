@@ -62,5 +62,5 @@ newlinks=list(set(_Links)-set(previouspages))
 for nl in newlinks:
     print(f'New page found ',nl)
     _nl=nl+"\n"
-    with open(NEWLINKS,'a') as O:
+    with open(NEWLINKS,'w') as O:
         O.write(_nl)

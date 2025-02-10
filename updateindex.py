@@ -8,8 +8,8 @@ INPUTFILE="addnewobject.json"
 #
 #IF NEWFILE <> FILETOUPDATE this will contain only the last update 
 #
-FILETOUPADATE="localworking/allRecipesData_piece.json"
-NEWFILE="localworking/allRecipesData_piece.json"
+FILETOUPADATE="localworking/allRecipesData.json"
+NEWFILE="localworking/allRecipesData.json"
 
 def uPdate(I,IV,O,NewValue):
     with open(FILETOUPADATE, 'r') as ufile:

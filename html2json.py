@@ -81,6 +81,13 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
             Title=r.html.xpath('/html/body/div/main/div[1]/h3',first=True)
             Myinfo['Title']=Title.text
             allInfo[Header]['Title']=Title.text
+            
+            #New objects to be populated later , created only in the obj to update
+            allInfo[Header]['ThumbNails']=[]
+            allInfo[Header]['Equipment']=""
+            allInfo[Header]['RecipeUUID']=""
+            allInfo[Header]['Categories']=[]
+            allInfo[Header]['Lang']="en"
 
             #Descrpition
             Myinfo['Description']=''
@@ -166,6 +173,7 @@ with open(LINKSTOPROCESS,'r') as Recipes_links:
                 allInfo[Header]['VideoUrl']['alt']=alt
             #print("VIDEO URL IN YT ==>",VideoUrl.text)
             #Myinfo['VideoUrl']=VideoUrl.text
+
     
 
             

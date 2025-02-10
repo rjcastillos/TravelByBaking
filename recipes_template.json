@@ -1,7 +1,7 @@
 {
     "RecipeHeader": {
         "RecipeCodeName":"Header",
-        "ID":"",
+        "RecipeUUID":"",
         "Lang":"en",
         "Link": "",
         "ShortDescription": "title",
@@ -19,7 +19,7 @@
         "Difficulty":{"colName":"Dificulty Level","r_Dlevel":"Beginners"},
         "Directions":["<li>"],
         "VideoUrl":{"src":"iframe yt source","title":"alt"},
-        "ThumbNails":["urls"]
-
+        "ThumbNails":["urls"],
+        "Equipment":[]
     }
 }
