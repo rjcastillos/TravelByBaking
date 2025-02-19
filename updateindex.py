@@ -4,7 +4,7 @@ DEBUG=False
 #
 # Updates in INPUTFILE
 #
-INPUTFILE="addnewobject.json"
+INPUTFILE="localworking/categories.json"
 #
 #IF NEWFILE <> FILETOUPDATE this will contain only the last update 
 #
@@ -32,8 +32,15 @@ def uPdate(I,IV,O,NewValue):
   
     if type(data[IV][O]) is list:
         print ("Updating list ", data[IV][O])
-        data[IV][O].clear()
-        data[IV][O].append(NewValue)
+        ##the following if is if the list want to be empited
+        ## a coming "Element":[] in an existent Element":["foo","morefoo"]  will empty "Element"
+        ## Leaving "Element":[] as a result
+        if len(NewValue) == 0 :{
+            data[IV][O].clear()
+        }
+        for n in NewValue:{
+            data[IV][O].append(n)
+        }
     else:
         if type(data[IV][O]) is dict:
             myd={O:NewValue}
