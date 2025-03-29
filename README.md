@@ -41,5 +41,38 @@ Supports 3 ways to update a .json file:
 
     Examples:
 
+        Step 1 
+        #python3 scrapTBB.py
+              CLI  output
+                        at the end shows the new pages discovered
+                        https://travelbybaking.com/converting-oven-temperatures/
+                                New page found  https://travelbybaking.com/how-to-make-puff-pastry/
+
+                                New page found  https://travelbybaking.com/delicious-and-easy-cottage-cheese-pancake-recipe/
+
+                                New page found  https://travelbybaking.com/easy-and-tasty-cabbage-pie/
+
+                                New page found  https://travelbybaking.com/homemade-cottage-cheese/
+
+                                New page found  https://travelbybaking.com/leek-tart-with-puff-pastry/
+                Leaving the new entries in the file
+                linkstoupdate.txt
+        Step 2
+                #python3 html2json.py
+                Input is the file created in step 1 linkstoupdate.txt
+                creates a new .json file "newallRecipesData.json" 
+                also could append the new objects to the existent .json
+                
+        Step 3
+                make sure the ThumbNails exist
+                If the new recipes were not appended using the script in Step 2 , these have to be appended manually in "allRecipesData.json"
+        
+        To update the recipes by categories we need to run the JS in the Web location
+
+        
+        
+
+
+
 
 
